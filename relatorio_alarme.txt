@@ -1,0 +1,13 @@
+A B C S
+0 0 0 0
+0 0 1 1
+0 1 0 0
+0 1 1 0
+1 0 0 0
+1 0 1 1
+1 1 0 1
+1 1 1 1
+
+Minitermos: m1, m5, m6, m7
+Forma canonica: S = A'B'C + AB'C + ABC' + ABC
+Forma simplificada: S = C.B' + A.B

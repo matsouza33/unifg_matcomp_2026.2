@@ -1,0 +1,34 @@
+PRAZO_MAXIMO_REVISAO_DIAS = 180
+
+equipamentos = [
+    {"id": "Respirador 1","setor": "UTI","dias_desde_revisao": 45,"revisado": True},
+    {"id": "Respirador 2","setor": "UTI","dias_desde_revisao": 210,"revisado": True},
+    {"id": "Bomba 1","setor": "Triagem","dias_desde_revisao": 30,"revisado": False},
+    {"id": "Monitor 1","setor": "UTI","dias_desde_revisao": 100,"revisado": True}
+]
+
+# Tarefa 1: verifica se todos estao dentro do prazo de revisao.
+todos_dentro_do_prazo = all(
+    equipamento["dias_desde_revisao"] <= PRAZO_MAXIMO_REVISAO_DIAS
+    for equipamento in equipamentos
+)
+
+# Tarefa 2: verifica se existe equipamento da UTI sem revisao.
+existe_uti_sem_revisao = any(
+    equipamento["setor"] == "UTI" and not equipamento["revisado"]
+    for equipamento in equipamentos
+)
+
+# Tarefa 3: seleciona os IDs dos equipamentos com problema.
+equipamentos_com_problema = [
+    equipamento["id"]
+    for equipamento in equipamentos
+    if (
+        equipamento["dias_desde_revisao"] > PRAZO_MAXIMO_REVISAO_DIAS
+        or not equipamento["revisado"]
+    )
+]
+
+print("Todos estao dentro do prazo?", todos_dentro_do_prazo)
+print("Existe equipamento da UTI sem revisao?", existe_uti_sem_revisao)
+print("Equipamentos com problema:", equipamentos_com_problema)
